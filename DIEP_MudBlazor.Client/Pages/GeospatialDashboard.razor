@@ -1,0 +1,71 @@
+@page "/geospatial-dashboard"
+
+<MudContainer MaxWidth="MaxWidth.Medium">
+
+<PageTitle>Geospatial Dashboard</PageTitle>
+
+<MudText Typo="Typo.h4" Class="mt-4" GutterBottom="true">
+    Geospatial Dashboard
+</MudText>
+
+<MudText Typo="Typo.body1" Class="mb-6">
+    This page provides access to the project’s interactive geospatial dashboards.
+    Each dashboard presents disaster impact estimation results and supports visual exploration
+    of predicted impacts across affected areas.
+</MudText>
+
+<MudGrid Class="my-6" AlignItems="Center">
+    <MudItem xs="12" md="5">
+        <MudLink Href="/dashboard-1" Underline="Underline.Always" Color="Color.Inherit">
+            <MudText Typo="Typo.h5" GutterBottom="true" Style="font-weight:bold">
+                Dashboard 1
+            </MudText>
+        </MudLink>
+
+        <MudText Typo="Typo.body2">
+            Dashboard 1 provides an interactive experience of predicted disaster impacts across Texas and the Houston-Galveston Area.
+            Users can explore spatial patterns, compare areas, and review model outputs.
+        </MudText>
+    </MudItem>
+
+    <MudItem xs="12" md="7">
+        <MudPaper Elevation="2"
+                  Class="pa-2"
+                  Style="background-color:#324755;">
+            <MudLink Href="/dashboard-1">
+                <img src="images/dashboard1-screenshot.png"
+                     alt="Dashboard 1 screenshot"
+                     style="width:100%; height:auto; display:block;" />
+            </MudLink>
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+
+<MudGrid Class="my-6" AlignItems="Center">
+    <MudItem xs="12" md="5">
+        <MudLink Href="/dashboard-2" Underline="Underline.Always" Color="Color.Inherit">
+            <MudText Typo="Typo.h5" GutterBottom="true" Style="font-weight:bold">
+                Dashboard 2
+            </MudText>
+        </MudLink>
+
+        <MudText Typo="Typo.body2">
+            Dashboard 2 provides a secondary view of the downscaled project results, allowing users to
+            examine additional spatial outputs at the block group level across the Houston-Galveston area.
+        </MudText>
+    </MudItem>
+
+    <MudItem xs="12" md="7">
+        <MudPaper Elevation="2"
+                  Class="pa-2"
+                  Style="background-color:#324755;">
+            <MudLink Href="/dashboard-2">
+                <img src="images/dashboard2-screenshot.png"
+                     alt="Dashboard 2 screenshot"
+                     style="width:100%; height:auto; display:block;" />
+            </MudLink>
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+
+</MudContainer>

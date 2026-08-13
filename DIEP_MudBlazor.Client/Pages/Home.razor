@@ -1,0 +1,242 @@
+﻿@page "/"
+
+<MudContainer MaxWidth="MaxWidth.Medium">
+
+<PageTitle>Home</PageTitle>
+
+<MudText Typo="Typo.h3" Class="mt-4" GutterBottom="true">Disaster Impact Estimation Using Social Media</MudText>
+
+<MudText Typo="Typo.h6" GutterBottom="true">A Scalable Framework for Rapid Disaster Assessment and Visualization</MudText>
+
+<MudText Typo="Typo.body2">
+    Natural disasters such as hurricanes and tropical storms cause widespread damage, requiring rapid and 
+    accurate assessment to support emergency response and recovery. Traditional Preliminary Damage 
+    Assessments (PDA) rely on field surveys, insurance claims, and self-reporting, which are often time-intensive and resource-constrained.
+</MudText>
+
+<MudPaper Class="p-4 my-6">
+    <MudText Typo="Typo.h5" Align="Align.Center" Class="mb-2">Impact of Disasters</MudText>
+
+    <!-- Wrapper gives the bar the same solid background as footer -->
+    <MudPaper Elevation="1" Class="mb-4"
+              Style="background-color:#324755; color:#ffffff;">
+        <MudCarousel Class="mud-width-full"
+                     Style="height:420px; background-color:#324755;"
+                     ShowArrows="@arrows"
+                     ShowBullets="@bullets"
+                     EnableSwipeGesture="@enableSwipeGesture"
+                     AutoCycle="@autocycle"
+                     TData="string">
+
+            @foreach (var src in _carousel1)
+            {
+                <MudCarouselItem>
+                    <div class="d-flex" style="height:100%; width:100%; align-items:center; justify-content:center;">
+                        <img src="@src"
+                             alt="Image"
+                             style="max-width:100%; max-height:100%; object-fit:contain;" />
+                    </div>
+                </MudCarouselItem>
+            }
+        </MudCarousel>
+    </MudPaper>
+</MudPaper>
+
+<MudText Typo="Typo.body2" Class="mb-4">
+    This project introduces a Disaster Impact Estimation Prediction (DIEP) framework, a data-driven
+    approach that leverages geo-located social media self-reports to estimate disaster impacts in near real 
+    time. By combining social media data with official FEMA records and environmental datasets, the 
+    framework produces probabilistic predictions of damage and assistance needs across multiple categories 
+    at the zip code level.
+</MudText>
+
+
+<MudText Typo="Typo.h5" GutterBottom="true">Conceptual Approach</MudText>
+
+<MudText Typo="Typo.body2" GutterBottom="true">
+    The DIEP framework is built on the idea that social media acts as a form of Volunteered Geographic 
+    Information (VGI), where individuals report on conditions during disasters through posts, images, and 
+    descriptions. These self-reports contain valuable signals about local damage conditions, even though they 
+    may be noisy or incomplete. The model is developed using historical tropical storms in Texas, including 
+    Hurricane Harvey, Imelda, and Beryl. 
+</MudText>
+
+<MudText Typo="Typo.body2" GutterBottom="true">
+ To extract meaningful insights, the system integrates three primary data sources:
+</MudText>
+<!-- Do not include bullet points inside MudText could mess up formatting -->
+<ul class="mt-2 mb-4" style="margin-left: 2rem;">
+    <li class="mb-1">Social Media Data: Over 1 million geo-tagged posts collected during major Texas storm events 
+        provide real-time observations of damage and impacts.</li>
+    <li class="mb-1">FEMA Disaster Records: Household-level assistance and damage records serve as ground truth 
+        for model training and validation.</li>
+    <li class="mb-1">Environmental and Climate Data: Precipitation, wind, and other variables provide contextual 
+        information about storm intensity and spatial variability.</li>
+</ul>
+
+<MudPaper Elevation="1"
+          Class="my-6 p-2"
+          Style="background-color:#324755; display:flex; justify-content:center; align-items:center;">
+    <img src="images/Dataset.png"
+         alt="Image"
+         style="max-width:100%; height:auto; object-fit:contain;" />
+</MudPaper>
+
+<MudText Typo="Typo.body2" Class="mb-4" GutterBottom="true">
+    These datasets are spatially aligned at the zip code level, enabling the model to learn relationships
+between observed social media activity and documented disaster impacts.
+</MudText>
+
+<MudText Typo="Typo.h5" GutterBottom="true">Machine Learning Framework</MudText>
+
+<MudText Typo="Typo.body2" GutterBottom="true">
+    At the core of the system is a neural network-based prediction model, with a strong emphasis on Natural 
+    Language Processing (NLP). Social media text is processed using transformer-based models (specifically 
+    BERT), which convert large volumes of unstructured text into structured representations that capture 
+    contextual meaning. 
+</MudText>
+
+<MudText Typo="Typo.body2" GutterBottom="true">
+    The model predicts 11 FEMA-related impact variables, including:
+</MudText>
+
+<ul class="mt-2" style="margin-left: 2rem;">
+    <li class="mb-1">Structural damage (e.g., flood damage, roof damage, destroyed structures).</li>
+    <li class="mb-1">Insurance indicators (e.g., flood insurance, homeowner insurance)</li>
+    <li class="mb-1">Assistance eligibility (e.g., temporary shelter, repair, rental, replacement assistance)</li>
+</ul>
+
+<MudText Typo="Typo.body2" Class="mb-4" GutterBottom="true">
+    Each output is expressed as a probability, indicating the likelihood that a given impact occurred within a 
+    specific zip code.
+</MudText>
+
+<MudPaper Class="p-4 my-6">
+    <MudText Typo="Typo.h5" Align="Align.Center" Class="mb-2">Predicted Variables and Model Architecture</MudText>
+
+    <MudPaper Elevation="1" Class="mb-4"
+              Style="background-color:#324755; color:#ffffff;">
+        <MudCarousel Class="mud-width-full"
+                     Style="height:420px; background-color:#324755;"
+                     ShowArrows="@arrows"
+                     ShowBullets="@bullets"
+                     EnableSwipeGesture="@enableSwipeGesture"
+                     AutoCycle="@autocycle"
+                     TData="string">
+
+            @foreach (var src in _carousel2)
+            {
+                <MudCarouselItem>
+                    <div class="d-flex" style="height:100%; width:100%; align-items:center; justify-content:center;">
+                        <img src="@src"
+                             alt="Image"
+                             style="max-width:100%; max-height:100%; object-fit:contain;" />
+                    </div>
+                </MudCarouselItem>
+            }
+        </MudCarousel>
+    </MudPaper>
+</MudPaper>
+
+<MudText Typo="Typo.h5" GutterBottom="true">Performance and Capabilities</MudText>
+
+<MudText Typo="Typo.body2" GutterBottom="true">
+    The DIEP framework demonstrates strong predictive performance across multiple disaster scenarios:
+</MudText>
+
+<ul class="mt-2 mb-4" style="margin-left: 2rem;">
+    <li class="mb-1">Achieves high accuracy (up to ~98%) in several key impact categories</li>
+    <li class="mb-1">Cross-storm validation successfully demonstrated the model’s generalizability across different 
+        storm events, enabling prediction for future disasters</li>
+    <li class="mb-1">Processes large datasets efficiently, supporting near real-time applications</li>
+</ul>
+
+<MudText Typo="Typo.h5" GutterBottom="true">Visualization and Decisicion Support</MudText>
+
+<MudText Typo="Typo.body2" GutterBottom="true">
+    A key component of this project is the integration of results into interactive geospatial dashboards. These 
+    dashboards allow users to:
+</MudText>
+
+<ul class="mt-2" style="margin-left: 2rem;">
+    <li class="mb-1">Visualize predicted damage probabilities across regions</li>
+    <li class="mb-1">Visualize predicted impacts for multiple storms</li>
+    <li class="mb-1">Explore spatial patterns of disaster impacts</li>
+</ul>
+
+<MudText Typo="Typo.body2" GutterBottom="true">
+    This capability transforms the model into a decision-support tool for emergency managers, planners, and researchers.
+</MudText>
+
+<MudText Typo="Typo.body2" Class="mb-4" GutterBottom="true">
+    Click here [embed link] to view the ArcGIS experience dashboard.
+</MudText>
+
+<MudText Typo="Typo.h5" GutterBottom="true">Downscaling and Spatial Refinement</MudText>
+
+<MudText Typo="Typo.body2" GutterBottom="true">
+    In addition to zip code-level predictions, the project explores downscaling techniques to improve 
+    predictive accuracy and spatial resolution. This enables:
+</MudText>
+
+<ul class="mt-2 mb-4" style="margin-left: 2rem;">
+    <li class="mb-1">More localized impact assessments</li>
+    <li class="mb-1">Enhanced usability for community-level planning</li>
+    <li class="mb-1">Integration with finer-scale geographic units such as census block groups</li>
+</ul>
+
+<MudText Typo="Typo.h5" GutterBottom="true">Significance and Applications</MudText>
+
+<MudText Typo="Typo.body2" GutterBottom="true">
+    This framework demonstrates how emerging data sources and machine learning can augment traditional
+    disaster assessment workflows. Potential applications include:
+</MudText>
+
+<ul class="mt-2" style="margin-left: 2rem;">
+    <li class="mb-1">Rapid damage estimation for emergency response</li>
+    <li class="mb-1">Near real-time visualization of evolving disaster events</li>
+    <li class="mb-1">Potential for enhanced multimodal modeling</li>
+</ul>
+
+<MudText Typo="Typo.body2" Class="mb-4" GutterBottom="true">
+    By leveraging widely available data and scalable methods, the DIEP framework offers a cost-effective
+    and adaptable approach to disaster impact assessment.
+</MudText>
+
+<MudText Typo="Typo.h5" GutterBottom="true">Further Information</MudText>
+
+<MudText Typo="Typo.body2" GutterBottom="true">
+    For additional technical details regarding the methodology, data, machine learning framework, and model
+    evaluation, please refer to the full research paper available here: (link to paper).
+</MudText>
+
+<MudText Typo="Typo.body2" GutterBottom="true">
+    Datasets used within this project can be found here: (link to GRIIDC)
+</MudText>
+
+<MudText Typo="Typo.body2" GutterBottom="true">
+    The source code, downscaling workflows, and supporting implementation materials for this project are 
+    available on GitHub at: (link to GitHub)
+</MudText>
+
+</MudContainer>
+
+@code {
+    private readonly string[] _carousel1 =
+    {
+        "images/Key_Stats_Disasters.png",
+        "images/Impact_of_Disasters.png",
+        "images/Solution_AI_pwrd_dmg_est.png"
+    };
+
+    private readonly string[] _carousel2 =
+    {
+        "images/Target_Variables.png",
+        "images/Model_Arch.png",
+    };
+
+    private bool arrows = true;
+    private bool bullets = true;
+    private bool enableSwipeGesture = true;
+    private bool autocycle = true;
+}
